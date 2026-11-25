@@ -85,4 +85,3 @@ systemctl --user start xppen-ack05
 ./xppen-ack05 --check
 journalctl --user -u xppen-ack05 -f
 ```
-# xppen-ack05-linux-driver

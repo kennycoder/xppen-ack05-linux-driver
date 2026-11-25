@@ -1,0 +1,5 @@
+# Grant the active desktop session user (uaccess) access to the XPPen ACK05
+# Shortcut Remote vendor HID interface (28bd:0202) and /dev/uinput.
+# Must be numbered < 73 so it runs before 73-seat-late.rules applies uaccess ACLs.
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", SUBSYSTEMS=="usb", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0202", TAG+="uaccess"
+KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess"

@@ -1,0 +1,84 @@
+# XPPen ACK05 Wireless Shortcut Remote configuration
+#
+# Save this file at: ~/.config/xppen-ack05/config.toml
+# Changes are hot-reloaded automatically when saved (no restart needed).
+#
+# Action syntax:
+#   - Single keys:   "space", "a", "f5", "esc", "enter", "tab", "leftbrace", "rightbrace"
+#   - Shortcuts:     "ctrl+z", "ctrl+shift+z", "alt+tab", "super+d"
+#   - Media keys:    "volumeup", "volumedown", "mute", "playpause", "next", "prev"
+#   - Scroll wheel:  "scroll_up", "scroll_down", "scroll_left", "scroll_right"
+#   - Mod + scroll:  "ctrl+scroll_up", "ctrl+scroll_down"
+#   - Mouse btns:    "mouse_left", "mouse_right", "mouse_middle"
+#   - Shell command: 'cmd:xppen-audio-switch --sink "..." --source "..."'
+#   - Dial modes:    "dial_mode_next", "dial_mode_prev", "dial_mode:Volume"
+#   - Disable key:   "none"
+#
+# Run `xppen-ack05 --list-keys` to see all recognized key names.
+# Run `xppen-audio-switch --list` to see exact PipeWire/PulseAudio device names.
+# Run `xppen-ack05 --dry-run` to inspect physical buttons without triggering actions.
+
+[settings]
+# How long (in milliseconds) a dial tick holds a mapped key/shortcut before releasing.
+dial_tap_ms = 12
+# Automatically reload this file when modified on disk.
+hot_reload = true
+# Show a brief KDE Plasma OSD overlay when switching dial modes or audio presets.
+osd = true
+
+[keys]
+# Audio output + input presets
+k1  = 'cmd:xppen-audio-switch --sink "Fiio K17 R2R Analog Stereo" --source "FOX Mono" --label "FiiO K17 + FOX" --icon audio-headphones'
+k2  = 'cmd:xppen-audio-switch --sink "Audeze Maxwell Dongle Analog Stereo" --source "Audeze Maxwell Dongle Mono" --label "Audeze Maxwell" --icon audio-headset'
+k3  = 'cmd:xppen-audio-switch --sink "Stage V2 Analog Stereo" --source "FOX Mono" --label "Stage V2 + FOX" --icon audio-speakers'
+
+# Remaining shortcut keys
+k4  = "ctrl+v"
+k5  = "ctrl+s"
+k6  = "space"
+k7  = "b"
+k8  = "e"
+k9  = "leftbrace"
+k10 = "rightbrace"
+
+# Center button inside the mechanical dial cycles through [[dial_modes]] below
+dial_button = "dial_mode_next"
+
+# Fallback dial bindings (used only if [[dial_modes]] is empty/omitted)
+dial_cw  = "volumeup"
+dial_ccw = "volumedown"
+
+# 3 dial modes cycled by pressing dial_button:
+[[dial_modes]]
+name = "Volume"
+icon = "audio-volume-high"
+cw   = "volumeup"
+ccw  = "volumedown"
+
+[[dial_modes]]
+name = "Zoom"
+icon = "zoom-in"
+cw   = "ctrl+equal"
+ccw  = "ctrl+minus"
+
+[[dial_modes]]
+name = "Scroll"
+icon = "input-mouse"
+cw   = "scroll_down"
+ccw  = "scroll_up"
+
+# Optional: uncomment and adjust [hardware.button_bits] if `xppen-ack05 --dry-run`
+# shows your firmware revision maps physical buttons to different bit positions.
+#
+# [hardware.button_bits]
+# k1 = 0
+# k2 = 1
+# k3 = 2
+# k4 = 3
+# k5 = 4
+# k6 = 5
+# k7 = 6
+# k8 = 7
+# k9 = 8
+# k10 = 9
+# dial_button = 10

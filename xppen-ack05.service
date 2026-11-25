@@ -1,0 +1,12 @@
+[Unit]
+Description=XPPen ACK05 Wireless Shortcut Remote Driver
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/xppen-ack05 --config %h/.config/xppen-ack05/config.toml
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
